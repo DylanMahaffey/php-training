@@ -3,25 +3,58 @@
     margin: 0;
     box-sizing: border-box;
 }
-header{
-    width: 100%;
-    padding-left: 10px;
-    
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-header img{
-    width: 50px;
-}
-nav{
-    display: flex;
-}
-.nav-link{
-    padding: 20px;
+a{
     text-decoration: none;
     color: black;
 }
-.nav-link:hover{
-    background-color: honeydew;
+nav{
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+
+    background: honeydew;
+    box-shadow: 1px 1px 1px rgba(0, 0, 0, .3)
+}
+nav ul{
+    display: flex;
+    justify-content: center;
+}
+
+nav ul li {
+    list-style-type: none;
+    padding: 10px 20px;
+}
+nav ul li:hover {
+    background: lightblue;
+}
+
+.hero{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 300px;
+    background: url('https://wallpapersite.com/images/pages/pic_w/1799.jpg') no-repeat center top;
+    background-size: cover;
+}
+.hero h2{
+    background: rgba(255, 255, 255, .9);
+    padding: 50px 100px;
+    border-radius: 20px;
+
+    transition: all .7s ease;
+}
+
+.swoop-right{
+    opacity: 0;
+    transform: translateX(50px);
+}
+
+.content{
+    height: 50vh;
+}
+
+footer{
+    background: #232527;
+    height: 200px;
 }

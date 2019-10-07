@@ -1,14 +1,8 @@
 <?php 
+    session_start();
     require_once('conn.php');
-    $thisPageName = $_GET['page'] ?? 'Home';
-
-    $sql = "SELECT * FROM test.content WHERE pagename = '$thisPageName'";
-    $result = $conn->query($sql);
-
-    $sql = "SELECT * FROM test.content";
-    $navResult = $conn->query($sql);
-
-    $row = $result->fetch_assoc();
+    require_once('nav.php');
+    require_once('functions.php');
 ?>
 
 <!DOCTYPE html>
@@ -17,7 +11,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title><?= $row['pagename']?></title>
+    <title><?php //echoTitle($row);?></title>
 
 
     <link rel="stylesheet" type="text/css" href="styles.css">
@@ -26,21 +20,24 @@
 
     <nav>
         <?php 
-        echo '<ul>';
-            while($item = $navResult->fetch_assoc()){
-                echo "<li><a href='http://192.168.33.10?page=".$item['pagename']."'>".$item['pagename']."</a></li>";
-            }
-            echo '</ul>';
+        makeNav($conn, $loggedIn);
+        if($_SESSION['loggedin'] == 'not logged in'){
+            echo $_SESSION['loggedin'];
+        }
         ?>
     </nav>
 
+
     <?php 
-        
-        echo '<p>' . $row['pagetitle'] . '</p>';
-        echo $row['pagecontent'];
-        
+        makeContent($result);
     ?>
     
 
+    <footer>
+    </footer>
 </body>
 </html>
+
+<script>
+    document.getElementsByClassName('swoop-right').classList.remove("swoop-right");
+</script>
